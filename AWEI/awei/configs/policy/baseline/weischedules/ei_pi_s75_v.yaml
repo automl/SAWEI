@@ -1,0 +1,14 @@
+# @package _global_
+defaults:
+  - ../weischedule
+
+schedule_id: EI -> PI (v), switch after 75%
+
+schedule_prototype:
+  - [0.5, 0.75]  # first EI
+  - [1, 0.25]  # then PI
+
+smac_kwargs:
+  acquisition_function:
+    _target_: dacbo.weighted_expected_improvement.WEI
+    use_pure_PI: true

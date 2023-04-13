@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - ../weischedule
+
+schedule_id: Linear EI->PI (5 steps)
+
+schedule_prototype:
+  - [0.5, 0.2] 
+  - [0.625, 0.2]
+  - [0.75, 0.2]
+  - [0.875, 0.2]
+  - [1, 0.2]  

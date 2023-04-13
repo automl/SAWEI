@@ -1,0 +1,53 @@
+defaults:
+  # - slurm: cpus
+  - _self_
+  - instance_set/BBOB: default
+  #- dim: 2d
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+
+seed: 999
+
+action_admin:
+  class_name: dacbo.actions.WEIActionAdmin
+
+observer:
+  observation_types: [remaining_steps, wei_alpha, wei_pi_term, wei_ei_term, ubr, ubr_min_ucb, ubr_min_lcb, n_incumbent_changes]
+  normalize_observations: true
+  seed: ${seed}
+
+budget_doe: ???  # Set in dim # Size of initial design / design of experiment (doe)
+budget_sbo: ???  # Set in dim # Number of surrogate-based optimization (sbo) steps
+cutoff: ${budget_sbo}  # We can only apply a policy during the surrogate-based optimization
+
+smac_class: smac.facade.blackbox_facade.BlackBoxFacade
+smac_kwargs:
+  scenario:
+    configspace: null  # initialized in env
+    n_trials: ${calculate_n_trials:${budget_doe},${budget_sbo}}
+    seed: ${seed}
+  initial_design:
+    n_configs: ${budget_doe}
+    max_ratio: 1  # Set this up so the number of configs in initial design is not capped
+  acquisition_function:
+    _target_: dacbo.weighted_expected_improvement.WEI
+  config_selector:
+    _target_: smac.main.config_selector.ConfigSelector
+    retrain_after: 1
+  logging_level: 
+    _target_: pathlib.Path
+    _args_ : ["/home/benjamin/Dokumente/code/tmp/DAC-BO/AWEI/awei/configs/logging.yml",]
+  callbacks:
+    - _target_: awei.adaptive_weighted_ei.UpperBoundRegretCallback
+      top_p: 0.5
+    - _target_: awei.adaptive_weighted_ei.WEITracker
+
+n_eval_episodes: 1
+schedule_id: "unknown"
+
+outdir: awei_runs
+hydra:
+  run:
+    dir: ${outdir}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${outdir}/${now:%Y-%m-%d}/${now:%H-%M-%S}

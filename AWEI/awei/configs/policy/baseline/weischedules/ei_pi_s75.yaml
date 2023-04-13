@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - ../weischedule
+
+schedule_id: EI -> PI, switch after 75%
+
+schedule_prototype:
+  - [0.5, 0.75]  # first EI
+  - [1, 0.25]  # then PI

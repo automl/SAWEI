@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - ../weischedule
+
+schedule_id: Explore (w=0)
+
+schedule_prototype:
+  - [0., 1]
