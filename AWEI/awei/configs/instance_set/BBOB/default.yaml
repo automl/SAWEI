@@ -1,9 +1,0 @@
-# @package _global_
-benchmark: BBOB
-smac_kwargs:
-  scenario:
-    deterministic: true 
-instance_set:  # can be single instance like here or a list
-  fid: 3
-  dimension: ${dimension}  # set in dim
-  instance: 1

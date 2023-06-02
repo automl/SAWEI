@@ -1,4 +1,0 @@
-# @package _global_
-budget_doe: 15  # Size of initial design / design of experiment (doe)
-budget_sbo: 100  # Number of surrogate-based optimization (sbo) steps
-dimension: 5

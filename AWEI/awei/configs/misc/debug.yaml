@@ -1,7 +1,0 @@
-# @package _global_
-outdir: awei_runs_debug
-hydra:
-  run:
-    dir: ${outdir}
-  sweep:
-    dir: ${outdir}

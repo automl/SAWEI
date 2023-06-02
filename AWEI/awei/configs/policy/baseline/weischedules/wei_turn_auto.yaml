@@ -1,9 +1,0 @@
-# @package _global_
-
-schedule_id: WEI Turn Auto (EI -> Attitude)
-
-policy:
-  _target_: awei.heuristics.WEITurnUpDownPolicy
-  alpha: 0.5
-  delta: 0.05
-  direction: auto
