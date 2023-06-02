@@ -1,0 +1,14 @@
+# @package _global_
+
+schedule_id: Portfolio Allocation (n=3)
+
+portfolio_allocation:
+  acquisition_functions:
+    - _target_: smac.acquisition.function.LCB
+      beta: 0.1
+      nu: 0.2
+      beta_scaling_srinivas: True
+    - _target_: smac.acquisition.function.EI
+      xi: 0.01
+    - _target_: smac.acquisition.function.PI
+      xi: 0.01

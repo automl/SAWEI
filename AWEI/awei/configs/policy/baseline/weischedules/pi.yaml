@@ -1,0 +1,9 @@
+# @package _global_
+schedule_id: PI (vanilla)
+
+policy:
+  _target_: awei.heuristics.StaticPolicy
+
+smac_kwargs:
+  acquisition_function:
+    _target_: smac.acquisition.function.PI

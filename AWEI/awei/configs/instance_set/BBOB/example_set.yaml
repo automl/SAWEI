@@ -1,0 +1,18 @@
+# @package _global_
+benchmark: BBOB
+smac_kwargs:
+  scenario:
+    deterministic: true 
+instance_set:
+  - 
+    fid: 3
+    dimension: 2
+    instance: 1
+  -
+    fid: 5
+    dimension: 2
+    instance: 1
+  -
+    fid: 4
+    dimension: 2
+    instance: 1

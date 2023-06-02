@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  - ../weischedule
+
+schedule_id: WEI_1
+
+schedule_prototype:
+  - [1, 1] 

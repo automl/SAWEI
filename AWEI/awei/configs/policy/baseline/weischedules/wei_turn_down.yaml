@@ -1,0 +1,9 @@
+# @package _global_
+
+schedule_id: WEI Turn Up (PI -> Explore)
+
+policy:
+  _target_: awei.heuristics.WEITurnUpDownPolicy
+  alpha: 1
+  delta: 0.05
+  direction: exploring

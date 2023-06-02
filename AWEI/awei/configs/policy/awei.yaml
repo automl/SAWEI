@@ -1,0 +1,17 @@
+# @package _global_
+# defaults:
+#   - baseline/weischedules/ei
+
+schedule_id: AWEI (${policy.atol_rel},${policy.track_attitude},${policy.delta},${policy.use_pure_PI},${policy.auto_alpha})
+
+policy:
+  _target_: awei.adaptive_weighted_ei.AWEIPolicy
+  atol_rel: 0.1
+  track_attitude: last
+  use_pure_PI: true
+  auto_alpha: false
+  delta: 0.1
+
+# smac_kwargs:
+#   runhistory_encoder:
+#     _target_: smac.runhistory.encoder.RunHistoryLogScaledEncoder

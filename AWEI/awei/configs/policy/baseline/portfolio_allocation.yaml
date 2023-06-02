@@ -1,0 +1,25 @@
+# @package _global_
+defaults:
+  - pofal/n3
+
+schedule_id: Portfolio Allocation
+
+policy:
+  _target_: awei.heuristics.PortfolioAllocationPolicy
+
+portfolio_allocation:
+  acquisition_functions: ???  # set in pofal/nx
+
+smac_kwargs:
+  acquisition_function:
+    _target_: awei.baselines.portfolio_allocation.MultiAcquisitionFunction
+    acquisition_functions: ${instantiate_acq_funs:${portfolio_allocation.acquisition_functions}}
+  acquisition_maximizer:
+    _target_: awei.baselines.portfolio_allocation.GPHedge
+    seed: ${seed}
+    configspace: ???  # set in DACBO env  
+  callbacks:
+    - _target_: awei.adaptive_weighted_ei.UpperBoundRegretCallback
+      top_p: 0.5
+    - _target_: awei.adaptive_weighted_ei.WEITracker
+    - _target_: awei.baselines.portfolio_allocation.PortfolioAllocation

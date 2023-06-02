@@ -1,0 +1,9 @@
+# @package _global_
+schedule_id: LCB
+
+policy:
+  _target_: awei.heuristics.StaticPolicy
+
+smac_kwargs:
+  acquisition_function:
+    _target_: smac.acquisition.function.LCB

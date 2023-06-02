@@ -1,0 +1,9 @@
+# @package _global_
+
+policy:
+  _target_: awei.baseline.Schedule
+  schedule: ${make_schedule:${schedule_prototype},${budget_sbo}}
+
+schedule_id: WEISchedule
+
+schedule_prototype: ???

@@ -1,0 +1,22 @@
+# @package _global_
+benchmark: HPOBench_det
+
+budget_doe: 15  # Size of initial design / design of experiment (doe)
+budget_sbo: 100  # Number of surrogate-based optimization (sbo) steps
+
+smac_kwargs:
+  scenario:
+    deterministic: true # average available seeds
+  intensifier:
+    max_config_calls: 1 
+  config_selector:
+    retries: 64
+
+global_min_of: test  # val, test
+global_min_metric: acc
+
+instance_set:  # can be single instance like here or a list
+  model: rf
+  task_id: 3917
+  # metric: f1
+  # seed: 665  # This is the seed the hpo problem was evaluated on
