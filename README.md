@@ -1,6 +1,15 @@
 # Self-Adjusting Weighted Expected Improvement for Bayesian Optimization
 This is the repository for the paper accepted at AutoML Conf'23.
 
+🎆 We also have a lean and convenient SMAC3 integration.
+For this clone the SMAC3 repo, checkout the branch and install it:
+```bash
+git clone https://github.com/automl/SMAC3.git && cd SMAC3
+git checkout feature/sawei
+pip install -e .
+```
+You can find a usage example [here](https://github.com/automl/SMAC3/blob/feature/sawei/examples/6_advanced_features/2_SAWEI.py).
+
 ## Installation
 > :warning: Only tested on Linux.
 
